@@ -1,0 +1,26 @@
+{
+  "name": "phoenixtw-skills",
+  "version": "1.0.0",
+  "description": "Agent skills for real engineering - not vibe coding",
+  "bin": {
+    "phoenixtw-skills": "./install.sh"
+  },
+  "scripts": {
+    "install": "bash install.sh",
+    "postinstall": "bash install.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phoenixTW/skills.git"
+  },
+  "keywords": [
+    "ai",
+    "coding-agent",
+    "skills",
+    "claude",
+    "cursor",
+    "pi"
+  ],
+  "author": "PhoenixTW",
+  "license": "MIT"
+}
