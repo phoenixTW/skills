@@ -51,7 +51,7 @@ You describe what you want. The agent builds something else.
 
 This isn't an AI problem—it's a communication problem. The same issue existed before AI, when requirements were passed from product to engineering. The solution is the same: ask better questions up front.
 
-**The fix**: Use `/roast-my-plan` before you start coding. The skill interrogates your plan until every edge case is covered and every dependency is clear.
+**The fix**: Use `/grill` before you start coding. The skill interrogates your plan until every edge case is covered and every dependency is clear.
 
 ---
 
@@ -91,7 +91,7 @@ A typical feature workflow:
 
 ```
 1. Align on the plan
-   /roast-my-plan
+   /grill
 
 2. Document requirements
    /to-prd
@@ -130,7 +130,7 @@ For daily code work.
 
 - **[drop-worktree](skills/engineering/drop-worktree/SKILL.md)** — Safely remove worktrees and branches. Checks for open PRs before deletion.
 
-- **[roast-my-plan](skills/engineering/roast-my-plan/SKILL.md)** — Grills your plan until every decision is explicit. Catches edge cases before coding.
+- **[grill](skills/engineering/grill/SKILL.md)** — Grills your plan until every decision is explicit. Catches edge cases before coding.
 
 - **[setup-phoenixtw-skills](skills/engineering/setup-phoenixtw-skills/SKILL.md)** — One-time per-repo setup. Configures issue tracker, triage labels, and documentation locations.
 
@@ -157,7 +157,7 @@ User: I want to add user authentication to my app.
 
 Agent: Let me ask some questions about this plan...
 
-[roast-my-plan clarifies edge cases, dependencies, requirements]
+[grill clarifies edge cases, dependencies, requirements]
 
 User: [answers]
 

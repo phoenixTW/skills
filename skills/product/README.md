@@ -302,7 +302,7 @@ Product Planning:
   ↓
 
 Engineering:
-  roast-my-plan → create-worktree → tdd → drop-worktree
+  grill → create-worktree → tdd → drop-worktree
 
   ↓
 
@@ -336,7 +336,7 @@ Agent: Breaking into vertical slices...
 
 User: I'll take the first one.
 
-User: /roast-my-plan
+User: /grill
 
 Agent: Let me grill you on this database schema...
 

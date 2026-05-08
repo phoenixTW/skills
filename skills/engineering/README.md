@@ -190,7 +190,7 @@ Aborted. Please close or merge PR #123 first.
 
 ---
 
-### [roast-my-plan](./roast-my-plan/SKILL.md)
+### [grill](./grill/SKILL.md)
 
 **Design grilling for alignment.**
 
@@ -199,7 +199,7 @@ Grills the user relentlessly on every part of a plan until shared understanding 
 **When to use:**
 - User wants stress test of a plan
 - Design grilling before implementation
-- Says "roast my plan"
+- Says "grill me", "grill this", "grill my plan", or "roast my plan"
 - Starting a new feature or major change
 
 **Workflow:**
@@ -215,6 +215,8 @@ Grills the user relentlessly on every part of a plan until shared understanding 
 - Uncovers hidden dependencies
 - Aligns understanding before coding
 - Saves time by finding problems upfront
+
+> **Note:** Formerly `roast-my-plan` (deprecated, removal June 8, 2026). Use `/grill` instead.
 
 ---
 
@@ -415,7 +417,7 @@ Some skills depend on `/setup-phoenixtw-skills` being run first:
 | `zoom-out` | ✅ Yes | Uses domain glossary for explanations |
 
 **Other skills work standalone:**
-- `roast-my-plan` - No setup needed
+- `grill` - No setup needed
 - `coding-standards` - No setup needed
 - `create-worktree` - No setup needed
 - `drop-worktree` - No setup needed
@@ -428,7 +430,7 @@ Some skills depend on `/setup-phoenixtw-skills` being run first:
 Here's how these skills work together in a typical development session:
 
 ```
-1. Start with /roast-my-plan
+1. Start with /grill
    → Align on what to build
 
 2. Use /to-prd
