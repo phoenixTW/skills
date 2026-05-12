@@ -103,6 +103,9 @@ A typical feature workflow:
    /create-worktree
    /tdd
 
+   OR delegate the whole plan
+   /delegate
+
 5. Debug when things break
    /diagnose
 
@@ -125,6 +128,8 @@ For daily code work.
 - **[coding-standards](skills/engineering/coding-standards/SKILL.md)** — Reference for clean code patterns in Go, TypeScript, React, and Node.js. Naming, error handling, API design, testing.
 
 - **[create-worktree](skills/engineering/create-worktree/SKILL.md)** — Create git worktrees for parallel development. Keeps branches isolated and organized.
+
+- **[delegate](skills/engineering/delegate/SKILL.md)** — Sub-agent driven development. Dispatch parallel/sequential workers, enforce strict review loops, model-agnostic.
 
 - **[diagnose](skills/engineering/diagnose/SKILL.md)** — Systematic debugging workflow. Reproduce → minimize → hypothesize → instrument → fix → regression test.
 

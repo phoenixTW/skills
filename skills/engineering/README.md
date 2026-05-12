@@ -73,6 +73,46 @@ Provides comprehensive standards for Go, TypeScript, JavaScript, React, and Node
 
 ---
 
+### [delegate](./delegate/SKILL.md)
+
+**Sub-agent driven development with strict review loops.**
+
+Breaks work into tasks, dispatches sub-agents for execution, and enforces a principal-engineer-level review loop until quality is met. Smart about execution strategy: single tasks are done directly, independent tasks run in parallel, coupled tasks run sequentially.
+
+**When to use:**
+- User says "delegate", "dispatch tasks", "sub-agent develop", or "execute this plan"
+- Multiple implementation tasks to execute
+- Want to use cheaper/faster models for execution while keeping stronger models for review
+- Need parallel sub-agent execution with isolated worktrees
+
+**Key features:**
+- **Model-agnostic** — asks which models to use for planning, execution, and review
+- **Smart dispatch** — single task = do it yourself, independent = parallel, coupled = sequential, mixed = chain of parallel groups
+- **Strict review loop** — two-stage review: spec compliance first, then code quality. Loops until PASS.
+- **3-strike escalation** — after 3 consecutive review failures on same task, escalates to user
+- **Coding standards integration** — attaches `coding-standards` skill to sub-agents
+
+**Example:**
+
+```
+User: delegate this plan using Sonnet for review, Haiku for execution
+
+Agent: Plan has 5 tasks. 3 are independent (parallel), 2 depend on those (sequential).
+
+Dispatching parallel group (tasks 1-3) with Haiku...
+✅ Task 1: PASS
+❌ Task 2: FAIL → fixing → re-reviewing → ✅ Task 2: PASS
+✅ Task 3: PASS
+
+Dispatching sequential group (tasks 4-5)...
+✅ Task 4: PASS
+✅ Task 5: PASS
+
+All tasks complete. 6 files changed, 12 tests passing, 1 review cycle needed.
+```
+
+---
+
 ### [create-worktree](./create-worktree/SKILL.md)
 
 **Create git worktrees for parallel feature development.**
@@ -418,6 +458,7 @@ Some skills depend on `/setup-phoenixtw-skills` being run first:
 
 **Other skills work standalone:**
 - `grill` - No setup needed
+- `delegate` - No setup needed
 - `coding-standards` - No setup needed
 - `create-worktree` - No setup needed
 - `drop-worktree` - No setup needed
@@ -438,6 +479,13 @@ Here's how these skills work together in a typical development session:
 
 3. Use /to-issues
    → Break the PRD into vertical slices
+
+4. Use /delegate to execute all issues
+   → Dispatches sub-agents (parallel or sequential)
+   → Strict review loop on each task
+   → Reports results when all complete
+
+   OR manually per issue:
 
 4. Run /create-worktree for the first issue
    → Set up isolated working environment
