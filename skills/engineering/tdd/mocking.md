@@ -21,16 +21,16 @@ At system boundaries, design interfaces that are easy to mock:
 
 Pass external dependencies in rather than creating them internally:
 
-```go
+```typescript
 // Easy to mock
-func ProcessPayment(order Order, paymentClient PaymentClient) error {
-	return paymentClient.Charge(order.Total)
+function processPayment(order, paymentClient) {
+  return paymentClient.charge(order.total);
 }
 
 // Hard to mock
-func ProcessPaymentHard(order Order) error {
-	client := stripe.NewClient(os.Getenv("STRIPE_KEY"))
-	return client.Charge(order.Total)
+function processPayment(order) {
+  const client = new StripeClient(process.env.STRIPE_KEY);
+  return client.charge(order.total);
 }
 ```
 
@@ -38,22 +38,21 @@ func ProcessPaymentHard(order Order) error {
 
 Create specific functions for each external operation instead of one generic function with conditional logic:
 
-```go
+```typescript
 // GOOD: Each function is independently mockable
-type API interface {
-	GetUser(ctx context.Context, id string) (User, error)
-	GetOrders(ctx context.Context, userID string) ([]Order, error)
-	CreateOrder(ctx context.Context, input CreateOrderInput) (Order, error)
-}
+const api = {
+  getUser: (id) => fetch(`/users/${id}`),
+  getOrders: (userId) => fetch(`/users/${userId}/orders`),
+  createOrder: (data) => fetch('/orders', { method: 'POST', body: data }),
+};
 
 // BAD: Mocking requires conditional logic inside the mock
-type API interface {
-	Do(ctx context.Context, method string, path string, payload any) ([]byte, error)
-}
+const api = {
+  fetch: (endpoint, options) => fetch(endpoint, options),
+};
 ```
 
 The SDK approach means:
-
 - Each mock returns one specific shape
 - No conditional logic in test setup
 - Easier to see which endpoints a test exercises

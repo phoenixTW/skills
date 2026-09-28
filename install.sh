@@ -52,31 +52,31 @@ check_in_repo() {
   return 1
 }
 
-# Discover available skills
+# Discover available skills (skips deprecated/ and misc/; same policy as scripts/link-skills.sh)
 discover_skills() {
   local skills=()
+  local root=""
 
-  # If running from repo root
   if check_in_repo; then
-    while IFS= read -r -d '' skill_path; do
-      if [[ -f "$skill_path/SKILL.md" ]]; then
-        local skill_name=$(basename "$skill_path")
-        local category=$(basename "$(dirname "$skill_path")")
-        skills+=("$category:$skill_name:$skill_path")
-      fi
-    done < <(find skills -mindepth 2 -maxdepth 2 -type d -print0)
+    root="skills"
+  elif [[ -d "$SKILLS_DIR" ]]; then
+    root="$SKILLS_DIR"
   else
-    # If skills are installed in REPO_DIR
-    if [[ -d "$SKILLS_DIR" ]]; then
-      while IFS= read -r -d '' skill_path; do
-        if [[ -f "$skill_path/SKILL.md" ]]; then
-          local skill_name=$(basename "$skill_path")
-          local category=$(basename "$(dirname "$skill_path")")
-          skills+=("$category:$skill_name:$skill_path")
-        fi
-      done < <(find "$SKILLS_DIR" -mindepth 2 -maxdepth 2 -type d -print0)
-    fi
+    return 0
   fi
+
+  while IFS= read -r -d '' skill_path; do
+    if [[ -f "$skill_path/SKILL.md" ]]; then
+      local skill_name
+      local category
+      skill_name=$(basename "$skill_path")
+      category=$(basename "$(dirname "$skill_path")")
+      case "$category" in
+        deprecated|misc) continue ;;
+      esac
+      skills+=("$category:$skill_name:$skill_path")
+    fi
+  done < <(find "$root" -mindepth 2 -maxdepth 2 -type d -print0)
 
   # Sort skills
   IFS=$'\n' sorted=($(sort <<<"${skills[*]}"))
