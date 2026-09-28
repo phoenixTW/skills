@@ -12,7 +12,7 @@ A large part of this hub is copied from Matt Pocock's [skills](https://github.co
 - Site / newsletter: [aihero.dev](https://www.aihero.dev/s/skills-newsletter)
 - Install upstream (optional): `npx skills@latest add mattpocock/skills` or `claude plugins install mattpocock-skills`
 
-Phoenix-authored skills in this hub include (among others) `delegate`, `caveman`, `coding-standards`, `create-worktree`, `drop-worktree`, `zoom-out`, and `setup-phoenixtw-skills`.
+Phoenix-authored skills in this hub include (among others) `delegate`, `caveman`, `coding-standards`, `blueprint`, `create-worktree`, `drop-worktree`, `zoom-out`, and `setup-phoenixtw-skills`.
 
 When you change a skill that originated upstream, treat upstream as the reference and keep attribution intact.
 
@@ -70,6 +70,7 @@ See [Engineering Skills](skills/engineering/README.md) for the full list. Highli
 - **[diagnosing-bugs](skills/engineering/diagnosing-bugs/SKILL.md)** - Disciplined diagnosis loop.
 - **[code-review](skills/engineering/code-review/SKILL.md)** - Standards + Spec review since a fixed point.
 - **[to-spec](skills/engineering/to-spec/SKILL.md)** / **[to-tickets](skills/engineering/to-tickets/SKILL.md)** - Spec then tracer-bullet tickets.
+- **[blueprint](skills/engineering/blueprint/SKILL.md)** - Plan-only implementation blueprint for a fresh `/implement` session.
 - **[delegate](skills/engineering/delegate/SKILL.md)** - Sub-agent driven development (Phoenix).
 - **[create-worktree](skills/engineering/create-worktree/SKILL.md)** / **[drop-worktree](skills/engineering/drop-worktree/SKILL.md)** - Parallel branch worktrees (Phoenix).
 - **[setup-phoenixtw-skills](skills/engineering/setup-phoenixtw-skills/SKILL.md)** - One-time per-repo hub setup.
@@ -99,7 +100,10 @@ See [Productivity Skills](skills/productivity/README.md). Highlights:
 3. Break into implementable pieces
    /to-tickets
 
-4. Pick a piece and work on it
+4. Detail the next piece (plan only)
+   /blueprint
+
+5. Pick a piece and work on it
    /create-worktree
    /tdd
    /implement
@@ -107,10 +111,10 @@ See [Productivity Skills](skills/productivity/README.md). Highlights:
    OR delegate the whole plan
    /delegate
 
-5. Debug when things break
+6. Debug when things break
    /diagnosing-bugs
 
-6. Review and clean up
+7. Review and clean up
    /code-review
    /drop-worktree
 ```

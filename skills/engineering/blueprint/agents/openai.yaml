@@ -1,0 +1,5 @@
+interface:
+  display_name: "Blueprint"
+  short_description: "Plan-only implementation blueprint for a fresh session"
+policy:
+  allow_implicit_invocation: false

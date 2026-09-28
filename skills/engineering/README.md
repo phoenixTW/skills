@@ -16,6 +16,7 @@ Reachable only when you type them.
 - **[setup-matt-pocock-skills](./setup-matt-pocock-skills/SKILL.md)**: Matt Pocock's original setup skill (kept as a faithful copy). Prefer `/setup-phoenixtw-skills` for this hub.
 - **[to-spec](./to-spec/SKILL.md)**: Turn the current conversation into a spec and publish it to the issue tracker.
 - **[to-tickets](./to-tickets/SKILL.md)**: Break any plan, spec, or conversation into tracer-bullet tickets with blocking edges.
+- **[blueprint](./blueprint/SKILL.md)**: Turn a ticket or requirement into a detailed, plan-only implementation blueprint (never commit) for a fresh `/implement` session.
 - **[implement](./implement/SKILL.md)**: Build the work described by a spec or set of tickets, driving `/tdd` at pre-agreed seams and closing with `/code-review`.
 - **[triage](./triage/SKILL.md)**: Move issues through a state machine of triage roles.
 - **[wayfinder](./wayfinder/SKILL.md)**: Plan a huge chunk of work as a shared map of decision tickets, resolved one at a time.
