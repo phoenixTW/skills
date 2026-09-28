@@ -1,6 +1,20 @@
 # PhoenixTW Skills
 
-Agent skills hub for real engineering. Owned copies of skills used day to day (Matt Pocock's set plus Phoenix customs), organized into installable buckets.
+Personal skills hub for day-to-day agent work. It combines Phoenix-custom skills with local copies of [Matt Pocock's skills](https://github.com/mattpocock/skills), organized into installable buckets.
+
+This repo is **not** an official release of Matt's skills, and it is **not** a drop-in replacement for installing from [`mattpocock/skills`](https://github.com/mattpocock/skills) or the Claude Code plugin `mattpocock-skills`. Prefer upstream if you want his managed updates. Prefer this hub if you want a single local set that includes Phoenix customs and curated copies.
+
+## Attribution
+
+A large part of this hub is copied from Matt Pocock's [skills](https://github.com/mattpocock/skills) collection (MIT). Those skills remain his work; this repo keeps owned copies so the hub can evolve independently.
+
+- Upstream: [github.com/mattpocock/skills](https://github.com/mattpocock/skills)
+- Site / newsletter: [aihero.dev](https://www.aihero.dev/s/skills-newsletter)
+- Install upstream (optional): `npx skills@latest add mattpocock/skills` or `claude plugins install mattpocock-skills`
+
+Phoenix-authored skills in this hub include (among others) `delegate`, `caveman`, `coding-standards`, `create-worktree`, `drop-worktree`, `zoom-out`, and `setup-phoenixtw-skills`.
+
+When you change a skill that originated upstream, treat upstream as the reference and keep attribution intact.
 
 ## Quickstart
 
@@ -18,14 +32,16 @@ npx phoenixtw-skills
 
 2. Pick the skills you want and which coding agents to install them on.
 
-3. Run `/setup-phoenixtw-skills` in your agent. It will:
-   - Ask which issue tracker to use (GitHub, GitLab, or local files)
-   - Ask what labels you apply when triaging tickets
-   - Ask where to save documentation
+3. Run `/setup-phoenixtw-skills` once per target repo. It configures:
+   - Issue tracker (GitHub, GitLab, or local files)
+   - Triage label vocabulary
+   - Where documentation is saved
 
-4. Done. You're ready to ship.
+   Use `/setup-phoenixtw-skills` for this hub. `/setup-matt-pocock-skills` is included as a faithful upstream copy; do not run both in the same repo unless you know you need that.
 
-Maintainers linking every promoted skill into local harness dirs:
+4. Done.
+
+Maintainers linking promoted skills into local harness dirs:
 
 ```bash
 bash scripts/link-skills.sh
@@ -49,27 +65,27 @@ bash scripts/link-skills.sh
 
 See [Engineering Skills](skills/engineering/README.md) for the full list. Highlights:
 
-- **[grill-with-docs](skills/engineering/grill-with-docs/SKILL.md)** — Grill a plan while updating domain docs.
-- **[tdd](skills/engineering/tdd/SKILL.md)** — Test-driven development, red-green-refactor.
-- **[diagnosing-bugs](skills/engineering/diagnosing-bugs/SKILL.md)** — Disciplined diagnosis loop.
-- **[code-review](skills/engineering/code-review/SKILL.md)** — Standards + Spec review since a fixed point.
-- **[to-spec](skills/engineering/to-spec/SKILL.md)** / **[to-tickets](skills/engineering/to-tickets/SKILL.md)** — Spec then tracer-bullet tickets.
-- **[delegate](skills/engineering/delegate/SKILL.md)** — Sub-agent driven development (Phoenix).
-- **[create-worktree](skills/engineering/create-worktree/SKILL.md)** / **[drop-worktree](skills/engineering/drop-worktree/SKILL.md)** — Parallel branch worktrees (Phoenix).
-- **[setup-phoenixtw-skills](skills/engineering/setup-phoenixtw-skills/SKILL.md)** — One-time per-repo hub setup.
+- **[grill-with-docs](skills/engineering/grill-with-docs/SKILL.md)** - Grill a plan while updating domain docs.
+- **[tdd](skills/engineering/tdd/SKILL.md)** - Test-driven development, red-green-refactor.
+- **[diagnosing-bugs](skills/engineering/diagnosing-bugs/SKILL.md)** - Disciplined diagnosis loop.
+- **[code-review](skills/engineering/code-review/SKILL.md)** - Standards + Spec review since a fixed point.
+- **[to-spec](skills/engineering/to-spec/SKILL.md)** / **[to-tickets](skills/engineering/to-tickets/SKILL.md)** - Spec then tracer-bullet tickets.
+- **[delegate](skills/engineering/delegate/SKILL.md)** - Sub-agent driven development (Phoenix).
+- **[create-worktree](skills/engineering/create-worktree/SKILL.md)** / **[drop-worktree](skills/engineering/drop-worktree/SKILL.md)** - Parallel branch worktrees (Phoenix).
+- **[setup-phoenixtw-skills](skills/engineering/setup-phoenixtw-skills/SKILL.md)** - One-time per-repo hub setup.
 
 ### Productivity
 
 See [Productivity Skills](skills/productivity/README.md). Highlights:
 
-- **[grill-me](skills/productivity/grill-me/SKILL.md)** / **[grilling](skills/productivity/grilling/SKILL.md)** — Relentless design interview.
-- **[handoff](skills/productivity/handoff/SKILL.md)** — Compact a conversation for another agent.
+- **[grill-me](skills/productivity/grill-me/SKILL.md)** / **[grilling](skills/productivity/grilling/SKILL.md)** - Relentless design interview.
+- **[handoff](skills/productivity/handoff/SKILL.md)** - Compact a conversation for another agent.
 
 ### In progress / misc / deprecated
 
-- [In progress](skills/in-progress/README.md) — beta skills, linked locally.
-- [Misc](skills/misc/README.md) — rarely used; not installed.
-- [Deprecated](skills/deprecated/README.md) — retired Phoenix forks kept for reference only.
+- [In progress](skills/in-progress/README.md) - beta skills, linked locally.
+- [Misc](skills/misc/README.md) - rarely used; not installed.
+- [Deprecated](skills/deprecated/README.md) - retired Phoenix forks kept for reference only.
 
 ## Typical flow
 
@@ -101,4 +117,7 @@ See [Productivity Skills](skills/productivity/README.md). Highlights:
 
 ## License
 
-MIT
+MIT.
+
+- Phoenix-authored material: Copyright (c) 2026 Kaustav Chakraborty (see [`LICENSE`](LICENSE)).
+- Skills copied from [mattpocock/skills](https://github.com/mattpocock/skills): Copyright (c) 2026 Matt Pocock, MIT, with attribution above.

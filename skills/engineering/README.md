@@ -26,6 +26,7 @@ Reachable only when you type them.
 Model- or user-reachable (rich trigger phrasing so the model can reach for them).
 
 - **[caveman](./caveman/SKILL.md)**: Ultra-compressed communication mode. Cuts filler while keeping technical meaning.
+- **[go-development](./go-development/SKILL.md)**: Go 1.27 development — context, errors, modernity, testing; drives `/implement` for build work.
 - **[coding-standards](./coding-standards/SKILL.md)**: Universal coding standards and patterns for Go, TypeScript, React, and Node.js.
 - **[prototype](./prototype/SKILL.md)**: Build a throwaway prototype to answer a design question.
 - **[diagnosing-bugs](./diagnosing-bugs/SKILL.md)**: Disciplined diagnosis loop for hard bugs and performance regressions.
