@@ -1,0 +1,60 @@
+skills/engineering/react-composition-patterns/rules/react19-no-forwardref.md
+  h_2de6621d66791b 1-42
+skills/engineering/react-composition-patterns/README.md
+  h_2de6621d66791b 1-60
+skills/engineering/react-composition-patterns/rules/state-context-interface.md
+  h_2de6621d66791b 1-191
+skills/engineering/react-composition-patterns/rules/state-lift-state.md
+  h_2de6621d66791b 1-125
+skills/engineering/react-composition-patterns/rules/patterns-children-over-render-props.md
+  h_2de6621d66791b 1-87
+skills/engineering/react-composition-patterns/rules/patterns-explicit-variants.md
+  h_2de6621d66791b 1-100
+skills/engineering/react-composition-patterns/rules/architecture-compound-components.md
+  h_2de6621d66791b 1-112
+skills/engineering/react-composition-patterns/AGENTS.md
+  h_2de6621d66791b 1-946
+skills/engineering/react-composition-patterns/SKILL.md
+  h_2de6621d66791b 1-90
+skills/engineering/react-composition-patterns/rules/state-decouple-implementation.md
+  h_2de6621d66791b 1-113
+skills/engineering/implement-spec/SKILL.md
+  s_393c87d43591b3::t_74e55fb04d6126 3,9-11,17,21,25,27-30,32,36,38
+skills/engineering/implement-spec/agents/openai.yaml
+  s_393c87d43591b3::t_5a5da5847c526d 3
+skills/engineering/pr/CREDITS.md
+  s_393c87d43591b3::t_1c29b127567e3b 3
+skills/engineering/pr/SKILL.md
+  s_393c87d43591b3::t_a7e607d72f3a8e 37,65-69
+skills/engineering/react-composition-patterns/rules/architecture-avoid-boolean-props.md
+  s_1763f7acef8e43::t_ff27e62b47cbfe 1-100
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "68181bed0233248dc1a574e9c6680454a8652bc0",
+  "prompts": {},
+  "humans": {
+    "h_2de6621d66791b": {
+      "author": "Kaustav Chakraborty <me@iamkaustav.com>"
+    }
+  },
+  "sessions": {
+    "s_1763f7acef8e43": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10b29-e500-79b3-9a3d-c449ded42a6b",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Kaustav Chakraborty <me@iamkaustav.com>"
+    },
+    "s_393c87d43591b3": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a10bbf-2735-76d8-b656-243a3b27f9e6",
+        "model": "glm-5.3-flash"
+      },
+      "human_author": "Kaustav Chakraborty <me@iamkaustav.com>"
+    }
+  }
+}
