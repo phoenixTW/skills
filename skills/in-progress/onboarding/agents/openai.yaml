@@ -1,0 +1,5 @@
+interface:
+  display_name: "Onboarding"
+  short_description: "Optimize post-signup onboarding and activation"
+policy:
+  allow_implicit_invocation: false
