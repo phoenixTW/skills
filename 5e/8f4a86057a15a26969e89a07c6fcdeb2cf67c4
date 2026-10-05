@@ -1,0 +1,36 @@
+skills/in-progress/onboarding/agents/openai.yaml
+  s_1bbd29309941f5::t_65aaf2acc51bab 1-5
+skills/in-progress/README.md
+  s_1bbd29309941f5::t_7e4e89dfb72601 16
+skills/in-progress/onboarding/evals/evals.json
+  s_1bbd29309941f5::t_a817d30bb20fbd 1-108
+skills/in-progress/onboarding/SKILL.md
+  s_1bbd29309941f5::t_dc69ee7b92539b 1-261
+skills/in-progress/onboarding/references/minimum-path-to-value.md
+  s_1bbd29309941f5::t_8ae1b70e7cda7d 1-49
+skills/in-progress/onboarding/references/activation-models.md
+  h_2de6621d66791b 1-57
+skills/in-progress/onboarding/references/experiments.md
+  s_1bbd29309941f5::t_82d70893e8dd00 1-258
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5e8f4a86057a15a26969e89a07c6fcdeb2cf67c4",
+  "prompts": {},
+  "humans": {
+    "h_2de6621d66791b": {
+      "author": "Kaustav Chakraborty <me@iamkaustav.com>"
+    }
+  },
+  "sessions": {
+    "s_1bbd29309941f5": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "76ac0f00-9863-4c51-9b63-4d5c75b31e69",
+        "model": "openrouter/OpenRouter/qwen/qwen3.8-27b"
+      },
+      "human_author": "Kaustav Chakraborty <me@iamkaustav.com>"
+    }
+  }
+}
