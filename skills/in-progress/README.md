@@ -16,4 +16,4 @@ Linked by `scripts/link-skills.sh`. Skipped from nothing else special in `instal
 - **[pr](./pr/SKILL.md)**: Reference for the shape a pull request body should take: a summary from the primary source (not the diff), the smallest visual that shows the change, a before/after pair of evidence, what was left out on purpose, and a one-way/two-way door call. Model-invoked.
 - **[retro](./retro/SKILL.md)**: Suggest improvements to the coding agent's environment (steering files, coding standards, automated checks, tooling) after a session. STUB: design notes only, not functional yet. User-invoked.
 - **[onboarding](./onboarding/SKILL.md)**: Optimize post-signup onboarding and activation — time-to-value, aha moments, checklists, empty states, stalled-user recovery. Model-invoked.
-- **[verify-blueprint](./verify-blueprint/SKILL.md)**: Verify explicit behavioral scenarios against repository revisions, run affected regressions, and report reproducible evidence. Model-invoked.
+- **[qa](./qa/SKILL.md)**: Generate and run blueprint scenario tests, audit unit/integration coverage, and report exact issues with reproduction and fix-verification steps. Model-invoked.

@@ -1,0 +1,468 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Blueprint QA report",
+  "description": "Generic QA evidence. Validate scenario/check/artifact cross-references and actual evidence separately.",
+  "type": "object",
+  "properties": {
+    "schema_version": {"const": 1},
+    "blueprint": {
+      "type": "object",
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "required": ["path", "sha256"],
+      "additionalProperties": false
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1},
+          "candidate_revision": {"type": "string", "minLength": 1},
+          "observed_revision": {"type": ["string", "null"]},
+          "source_state_before": {"type": "string", "minLength": 1},
+          "source_state_after": {"type": "string", "minLength": 1},
+          "source_unchanged": {"type": "boolean"}
+        },
+        "required": [
+          "id",
+          "path",
+          "candidate_revision",
+          "observed_revision",
+          "source_state_before",
+          "source_state_after",
+          "source_unchanged"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "environment": {"type": "string", "minLength": 1},
+    "fixtures": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "required_scenario_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "scenarios": {"type": "array", "items": {"$ref": "#/$defs/scenario"}, "minItems": 1},
+    "checks": {"type": "array", "items": {"$ref": "#/$defs/check"}, "minItems": 0},
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "kind": {
+            "enum": [
+              "qa_plan",
+              "generated_test",
+              "command_log",
+              "response",
+              "screenshot",
+              "trace",
+              "fixture",
+              "other"
+            ]
+          }
+        },
+        "required": ["id", "path", "sha256", "kind"],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}, "minItems": 0},
+    "exploration": {
+      "type": "object",
+      "properties": {
+        "limit_seconds": {"type": "number", "minimum": 0},
+        "used_seconds": {"type": "number", "minimum": 0},
+        "summary": {"type": "string", "minLength": 1}
+      },
+      "required": ["limit_seconds", "used_seconds", "summary"],
+      "additionalProperties": false
+    },
+    "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "recommendation": {"enum": ["ready", "not_ready"]}
+  },
+  "required": [
+    "schema_version",
+    "blueprint",
+    "repositories",
+    "environment",
+    "fixtures",
+    "required_scenario_ids",
+    "scenarios",
+    "checks",
+    "artifacts",
+    "findings",
+    "exploration",
+    "limitations",
+    "recommendation"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "status": {"enum": ["covered", "gap", "unproven", "not_applicable"]},
+        "rationale": {"type": "string", "minLength": 1},
+        "test_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "check_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true,
+          "minItems": 0
+        },
+        "finding_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true,
+          "minItems": 0
+        }
+      },
+      "required": ["applicable", "status", "rationale", "test_refs", "check_ids", "finding_ids"],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {"properties": {"applicable": {"const": false}}},
+          "then": {"properties": {"status": {"const": "not_applicable"}}}
+        },
+        {
+          "if": {"properties": {"applicable": {"const": true}}},
+          "then": {"properties": {"status": {"enum": ["covered", "gap", "unproven"]}}}
+        },
+        {
+          "if": {"properties": {"status": {"const": "covered"}}},
+          "then": {
+            "properties": {
+              "applicable": {"const": true},
+              "test_refs": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1},
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "check_ids": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1},
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"status": {"enum": ["gap", "unproven"]}}},
+          "then": {
+            "properties": {
+              "finding_ids": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1},
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "scenario": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "category": {"enum": ["happy", "edge", "failure", "exploratory"]},
+        "required": {"type": "boolean"},
+        "setup": {"type": "string", "minLength": 1},
+        "action": {"type": "string", "minLength": 1},
+        "expected": {"type": "string", "minLength": 1},
+        "observed": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "enum": ["passed", "failed", "blocked", "skipped", "unproven"]},
+        "check_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true,
+          "minItems": 0
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true,
+          "minItems": 0
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "unit": {"$ref": "#/$defs/coverage"},
+            "integration": {"$ref": "#/$defs/coverage"},
+            "acceptance": {"$ref": "#/$defs/coverage"}
+          },
+          "required": ["unit", "integration", "acceptance"],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "category",
+        "required",
+        "setup",
+        "action",
+        "expected",
+        "observed",
+        "status",
+        "check_ids",
+        "evidence_ids",
+        "coverage"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "passed"}}},
+          "then": {
+            "properties": {
+              "check_ids": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1},
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1},
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "check": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "level": {"enum": ["unit", "integration", "acceptance", "regression", "exploratory"]},
+        "required": {"type": "boolean"},
+        "command": {"type": "string", "minLength": 1},
+        "cwd": {"type": "string", "minLength": 1},
+        "started_at": {"type": ["string", "null"], "format": "date-time"},
+        "ended_at": {"type": ["string", "null"], "format": "date-time"},
+        "executed": {"type": "boolean"},
+        "exit_status": {"type": ["integer", "null"]},
+        "status": {"type": "string", "enum": ["passed", "failed", "blocked", "skipped", "unproven"]},
+        "test_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "evidence_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true,
+          "minItems": 0
+        },
+        "reason": {"type": "string"}
+      },
+      "required": [
+        "id",
+        "level",
+        "required",
+        "command",
+        "cwd",
+        "started_at",
+        "ended_at",
+        "executed",
+        "exit_status",
+        "status",
+        "test_refs",
+        "evidence_ids",
+        "reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"enum": ["passed", "failed"]}}},
+          "then": {
+            "properties": {
+              "executed": {"const": true},
+              "exit_status": {"type": "integer"},
+              "started_at": {"type": "string", "format": "date-time"},
+              "ended_at": {"type": "string", "format": "date-time"},
+              "evidence_ids": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1},
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"status": {"enum": ["blocked", "skipped", "unproven"]}}},
+          "then": {"properties": {"reason": {"type": "string", "minLength": 1}}}
+        },
+        {
+          "if": {"properties": {"executed": {"const": false}}},
+          "then": {
+            "properties": {
+              "exit_status": {"type": "null"},
+              "started_at": {"type": "null"},
+              "ended_at": {"type": "null"}
+            }
+          }
+        }
+      ]
+    },
+    "reproduction": {
+      "type": "object",
+      "properties": {
+        "status": {"enum": ["reproduced", "blocked", "not_reproduced"]},
+        "prerequisites": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "steps": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "reason": {"type": "string"}
+      },
+      "required": ["status", "prerequisites", "steps"],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"enum": ["blocked", "not_reproduced"]}}},
+          "then": {"required": ["reason"], "properties": {"reason": {"type": "string", "minLength": 1}}}
+        }
+      ]
+    },
+    "finding": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["defect", "coverage_gap", "environment", "test_artifact"]},
+        "blocking": {"type": "boolean"},
+        "summary": {"type": "string", "minLength": 1},
+        "scenario_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true,
+          "minItems": 0
+        },
+        "expected": {"type": "string", "minLength": 1},
+        "observed": {"type": "string", "minLength": 1},
+        "evidence_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true,
+          "minItems": 0
+        },
+        "reproduction": {"$ref": "#/$defs/reproduction"},
+        "verification": {
+          "type": "object",
+          "properties": {
+            "steps": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 1},
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "expected": {"type": "string", "minLength": 1}
+          },
+          "required": ["steps", "expected"],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "blocking",
+        "summary",
+        "scenario_ids",
+        "expected",
+        "observed",
+        "evidence_ids",
+        "reproduction",
+        "verification"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"recommendation": {"const": "ready"}}},
+      "then": {
+        "properties": {
+          "repositories": {
+            "items": {
+              "properties": {
+                "source_unchanged": {"const": true},
+                "observed_revision": {"type": "string", "minLength": 1}
+              }
+            }
+          },
+          "scenarios": {
+            "items": {
+              "allOf": [
+                {
+                  "if": {"properties": {"required": {"const": true}}},
+                  "then": {
+                    "properties": {
+                      "status": {"const": "passed"},
+                      "coverage": {
+                        "properties": {
+                          "unit": {
+                            "allOf": [
+                              {
+                                "if": {"properties": {"applicable": {"const": true}}},
+                                "then": {"properties": {"status": {"const": "covered"}}}
+                              }
+                            ]
+                          },
+                          "integration": {
+                            "allOf": [
+                              {
+                                "if": {"properties": {"applicable": {"const": true}}},
+                                "then": {"properties": {"status": {"const": "covered"}}}
+                              }
+                            ]
+                          },
+                          "acceptance": {
+                            "allOf": [
+                              {
+                                "if": {"properties": {"applicable": {"const": true}}},
+                                "then": {"properties": {"status": {"const": "covered"}}}
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "checks": {
+            "items": {
+              "allOf": [
+                {
+                  "if": {"properties": {"required": {"const": true}}},
+                  "then": {"properties": {"status": {"const": "passed"}}}
+                }
+              ]
+            }
+          },
+          "findings": {"items": {"properties": {"blocking": {"const": false}}}},
+          "limitations": {"maxItems": 0}
+        }
+      }
+    }
+  ]
+}
