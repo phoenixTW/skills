@@ -1,0 +1,34 @@
+skills/in-progress/unslop/LICENSE
+  s_c01dde8d5226c6::t_01815d064a5127 1-21
+skills/in-progress/unslop/SKILL.md
+  s_c01dde8d5226c6::t_01815d064a5127 1-78
+skills/in-progress/README.md
+  s_c01dde8d5226c6::t_6f38c663b0ddf0 7-8
+skills/in-progress/blast-radius/COMPARISON.md
+  s_c01dde8d5226c6::t_6f38c663b0ddf0 1-9
+skills/in-progress/blast-radius/SKILL.md
+  s_c01dde8d5226c6::t_6f38c663b0ddf0 1-102
+skills/in-progress/blast-radius/LICENSE
+  s_c01dde8d5226c6::t_01815d064a5127 1-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "89be6d3909330496e4e1e9301af0f8edb9da854f",
+  "prompts": {},
+  "humans": {
+    "h_2de6621d66791b": {
+      "author": "Kaustav Chakraborty <me@iamkaustav.com>"
+    }
+  },
+  "sessions": {
+    "s_c01dde8d5226c6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11b67-e791-72e3-add4-ff17c4dfdddb",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Kaustav Chakraborty <me@iamkaustav.com>"
+    }
+  }
+}
