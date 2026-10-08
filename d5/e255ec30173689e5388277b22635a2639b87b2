@@ -1,0 +1,27 @@
+skills/in-progress/verify-blueprint/references/tool-selection.md
+  s_36790b33dacd6e::t_f8d4b4b8c0c98e 1-22
+skills/in-progress/verify-blueprint/references/playwright.md
+  s_36790b33dacd6e::t_f8d4b4b8c0c98e 1-17
+skills/in-progress/verify-blueprint/SKILL.md
+  s_36790b33dacd6e::t_f8d4b4b8c0c98e 1-40
+skills/in-progress/README.md
+  s_36790b33dacd6e::t_d3845ac72a5086 19
+skills/in-progress/verify-blueprint/references/input-and-report.md
+  s_36790b33dacd6e::t_f8d4b4b8c0c98e 1-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d5e255ec30173689e5388277b22635a2639b87b2",
+  "prompts": {},
+  "sessions": {
+    "s_36790b33dacd6e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11c1f-0258-70e2-9d59-c522ce500c90",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "Kaustav Chakraborty <me@iamkaustav.com>"
+    }
+  }
+}
