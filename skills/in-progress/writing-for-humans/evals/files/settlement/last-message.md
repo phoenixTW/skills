@@ -1,0 +1,1 @@
+Root cause: money pipe retries w/o idempotency key → dup rows when bank ack late (>clearing). Fix = key on (acct, ext_ref), upsert. Edge: partial batch fail may double-post on rerun. Need backfill script + alert on dup count >0.

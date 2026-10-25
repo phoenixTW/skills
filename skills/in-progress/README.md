@@ -17,3 +17,4 @@ Linked by `scripts/link-skills.sh`. Skipped from nothing else special in `instal
 - **[retro](./retro/SKILL.md)**: Suggest improvements to the coding agent's environment (steering files, coding standards, automated checks, tooling) after a session. STUB: design notes only, not functional yet. User-invoked.
 - **[onboarding](./onboarding/SKILL.md)**: Optimize post-signup onboarding and activation — time-to-value, aha moments, checklists, empty states, stalled-user recovery. Model-invoked.
 - **[qa](./qa/SKILL.md)**: Generate and run blueprint scenario tests, audit unit/integration coverage, and report exact issues with reproduction and fix-verification steps. Model-invoked.
+- **[writing-for-humans](./writing-for-humans/SKILL.md)**: Explain what we are doing to a human, simple and visual first: an ASD-STE100 draft in the project's own nouns, Mermaid diagrams, an interactive HTML page, and an optional Manim video. User-invoked.

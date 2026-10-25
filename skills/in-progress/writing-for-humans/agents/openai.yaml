@@ -1,0 +1,5 @@
+interface:
+  display_name: "Writing for Humans"
+  short_description: "Explain it simple and visual first: draft, diagrams, page, video"
+policy:
+  allow_implicit_invocation: false

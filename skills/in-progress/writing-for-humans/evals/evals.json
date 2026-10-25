@@ -1,0 +1,43 @@
+{
+  "skill_name": "writing-for-humans",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/writing-for-humans explain evals/files/settlement/last-message.md",
+      "expected_output": "Adds the premise the previous message assumed. Uses the Ledger and Settlement Run terms from CONTEXT.md instead of the invented 'money pipe'. Keeps every fact and the hedge 'may double-post'. Writes whole sentences, not fragments. Draws at least one Mermaid diagram of the steps. Asks before building HTML.",
+      "assertions": [
+        "draft.md opens with a 'Where we are' section stating context the source assumed",
+        "Uses 'Settlement Run' and 'Ledger', never 'money pipe'",
+        "Keeps 'may double-post' as a hedge, not 'double-posts'",
+        "Every sentence has a subject and verb, with no arrows in prose",
+        "At least one diagrams/*.mmd file exists and is embedded in draft.md",
+        "Asks the user before creating index.html"
+      ],
+      "files": ["evals/files/settlement/CONTEXT.md", "evals/files/settlement/last-message.md"]
+    },
+    {
+      "id": 2,
+      "prompt": "/writing-for-humans run it again on evals/files/settlement/draft.md",
+      "expected_output": "Treats the input as a re-pitch. Keeps every section and fact. Changes only missing premise, leftover invented names, or a hard sentence. When nothing needs those changes, says the draft already passes and leaves it unchanged.",
+      "assertions": [
+        "Every section heading from the first draft is still present",
+        "Every number and hedge from the first draft is still present",
+        "Word count does not drop by more than 10 percent",
+        "No sentence loses its article, subject, or verb"
+      ],
+      "files": ["evals/files/settlement/CONTEXT.md", "evals/files/settlement/draft.md"]
+    },
+    {
+      "id": 3,
+      "prompt": "/writing-for-humans explain how the new retry queue works, and make me a video",
+      "expected_output": "Checks ELEVENLABS_API_KEY without printing it. When unset, asks the user to choose between a key, Kokoro, and macOS say, suggesting Kokoro first. Shows the script before rendering. Uses Text, not MathTex, for a topic without formulas.",
+      "assertions": [
+        "Reports ELEVENLABS_API_KEY only as set or unset",
+        "Offers key, Kokoro, and say, with Kokoro suggested first, when the key is unset",
+        "Shows video/script.md to the user before rendering",
+        "scene.py has no MathTex"
+      ],
+      "files": ["evals/files/settlement/CONTEXT.md"]
+    }
+  ]
+}
