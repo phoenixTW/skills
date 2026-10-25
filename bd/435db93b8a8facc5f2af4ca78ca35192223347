@@ -1,0 +1,64 @@
+skills/in-progress/writing-for-humans/references/video.md
+  s_48ccb179ca85e7::t_0215a233ba861e 38,41
+  s_48ccb179ca85e7::t_bade16bbcaabe4 1-28,30-37,39-40,42-45
+  s_48ccb179ca85e7::t_e0d89c5d3cd535 29
+skills/in-progress/writing-for-humans/evals/files/settlement/draft.md
+  s_48ccb179ca85e7::t_4c3dc8b74643f6 1-23
+skills/in-progress/performance-optimization/SKILL.md
+  h_2de6621d66791b 1-267
+skills/in-progress/code-simplification/SKILL.md
+  h_2de6621d66791b 1-340
+skills/in-progress/writing-for-humans/evals/files/settlement/last-message.md
+  s_48ccb179ca85e7::t_4c3dc8b74643f6 1
+skills/in-progress/writing-for-humans/agents/openai.yaml
+  s_48ccb179ca85e7::t_7e6c2ea4571d92 1-5
+skills/in-progress/security-and-hardening/references/hardening-patterns.md
+  h_2de6621d66791b 1-326
+skills/in-progress/shipping-and-launch/SKILL.md
+  h_2de6621d66791b 1-343
+skills/in-progress/writing-for-humans/LICENSE
+  s_48ccb179ca85e7::t_0a0409e356d1bf 1-21
+skills/in-progress/writing-for-humans/evals/evals.json
+  s_48ccb179ca85e7::t_ac591b4b87b612 20
+  s_48ccb179ca85e7::t_270fc5880a0d4d 6
+  s_48ccb179ca85e7::t_4640bc8057b035 1-5,7-19,21-43
+skills/in-progress/security-and-hardening/SKILL.md
+  h_2de6621d66791b 1-216
+skills/in-progress/README.md
+  s_48ccb179ca85e7::t_ac591b4b87b612 20
+skills/in-progress/writing-for-humans/SKILL.md
+  s_48ccb179ca85e7::t_b262bb98446e43 1-62,64-107
+  s_48ccb179ca85e7::t_e5fd3fd6e114e0 63
+skills/in-progress/writing-for-humans/references/html-explainer.md
+  s_48ccb179ca85e7::t_491b0e27a479b0 1-68
+skills/in-progress/frontend-ui-engineering/SKILL.md
+  h_2de6621d66791b 1-355
+skills/in-progress/writing-for-humans/evals/files/settlement/CONTEXT.md
+  s_48ccb179ca85e7::t_4c3dc8b74643f6 1-12
+skills/in-progress/performance-optimization/references/optimization-patterns.md
+  h_2de6621d66791b 1-250
+skills/in-progress/writing-for-humans/references/ste100-rules.md
+  s_48ccb179ca85e7::t_0a0409e356d1bf 1-45,47,49,52-53,55-59,61-100
+  s_48ccb179ca85e7::t_de57013c13ccc3 46,48,50-51,54,60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bd435db93b8a8facc5f2af4ca78ca35192223347",
+  "prompts": {},
+  "humans": {
+    "h_2de6621d66791b": {
+      "author": "Kaustav Chakraborty <me@iamkaustav.com>"
+    }
+  },
+  "sessions": {
+    "s_48ccb179ca85e7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0668dc12-7661-43ae-80f9-17b060832a3e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Kaustav Chakraborty <me@iamkaustav.com>"
+    }
+  }
+}
