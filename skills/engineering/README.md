@@ -36,6 +36,7 @@ Model- or user-reachable (rich trigger phrasing so the model can reach for them)
 - **[domain-modeling](./domain-modeling/SKILL.md)**: Build and sharpen a project's domain model via `CONTEXT.md` and ADRs.
 - **[codebase-design](./codebase-design/SKILL.md)**: Shared discipline and vocabulary for designing deep modules.
 - **[code-review](./code-review/SKILL.md)**: Two-axis review of the diff since a fixed point: Standards and Spec.
+- **[github-review](./github-review/SKILL.md)**: Review a GitHub PR on your behalf and post only critical findings as inline comments (draft first, post on approval).
 - **[rebase](./rebase/SKILL.md)**: Rebase the current branch onto `origin/<base>` (usually `main`), then force-with-lease push.
 - **[resolving-merge-conflicts](./resolving-merge-conflicts/SKILL.md)**: Resolve an in-progress git merge or rebase conflict hunk by hunk.
 - **[wizard](./wizard/SKILL.md)**: Generate an interactive bash wizard for steps only a human can perform.

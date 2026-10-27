@@ -1,0 +1,3 @@
+interface:
+  display_name: "GitHub Review"
+  short_description: "Post critical inline PR review comments to GitHub"
